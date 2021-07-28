@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url(../backg.png);
+}
+
+header {
+    background-color: rgb(255,1,193);
+}
+
+nav, main {
+    width: 80%;
+    margin: 0 auto;
+}
+main {
+    border: 1px solid rgb(0,225,255);
+}
+nav {
+    margin-bottom: 150px;
+}
+
+.logo {
+    width: 200px;
+}
+
+.char-div {
+    display: inline-block;
+    width: 23%;
+    margin-right: 10px;
+    background-color: blanchedalmond;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.char-div p {
+    padding: 25px 5px;
+    color: rgb(0,225,255);
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.char-div img {
+    width: 100%;
+}
+
+
