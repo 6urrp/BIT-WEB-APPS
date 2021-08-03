@@ -1,13 +1,19 @@
 let nameDiv = document.querySelector(".names");
 let about = document.querySelector(".about")
 const url = "https://rickandmortyapi.com/api/character/";
+let state = { 
+    page: 1,
+    allPages: 0,
+    window: 5
+}
+
 
 fetch(url)
 .then(resp => {
-    
     return resp.json();
 })
 .then(char => {
+    state.allPages = char.info.pages;
     char.results.forEach(el => {
         nameDiv.innerHTML += `
         <div class="char-div">
@@ -19,6 +25,54 @@ fetch(url)
     let singleArr = Array.from(single);
     console.log(single)
     singleArr.forEach( el => el.addEventListener("click", handler));
+
+    return state;
+})
+.then(state => {
+    console.log(state);
+    const pageButtons = (pages) => {
+        let wrapper = document.getElementById('pagination')
+        wrapper.innerHTML = ``
+        console.log(wrapper);
+
+        let maxLeft = (state.page - Math.floor(state.window / 2));
+        let maxRight = (state.page + Math.floor(state.window / 2));
+
+        if (maxLeft < 1) {
+            maxLeft = 1;
+            maxRight = state.window;
+        }
+
+        if (maxRight > pages) {
+            maxLeft = pages - (state.window - 1);
+            
+            if (maxLeft < 1){
+                maxLeft = 1;
+            }
+            maxRight = pages;
+        }
+
+        for (var page = maxLeft; page <= maxRight; page++) {
+            wrapper.innerHTML += `<button value=${page} class="page btn btn-sm btn-info">${page}</button>`
+        }
+    
+        if (state.page != 1) {
+            wrapper.innerHTML = `<button value=${1} class="page btn btn-sm btn-info">&#171; First</button>` + wrapper.innerHTML
+        }
+    
+        if (state.page != pages) {
+            wrapper.innerHTML += `<button value=${pages} class="page btn btn-sm btn-info">Last &#187;</button>`
+        }
+
+        $('.page').on('click', function() {
+            $('.names').empty()
+
+            state.page = Number($(this).val())
+    
+        })
+    }
+    pageButtons(state.allPages);
+
     
 })
 
@@ -67,12 +121,5 @@ const handler = e => {
 
 
 
-/* <ul class="char-list">
-                <li>${character.name}</li>
-                <li><img src=${character.image}></li>
-                <li>Species: ${character.species}</li>
-                <li>Status: ${character.status}</li>
-                <li>Gender: ${character.gender}</li>
-                <li>Home Planet: ${character.origin.name}</li>
-            </ul>*/
+
 

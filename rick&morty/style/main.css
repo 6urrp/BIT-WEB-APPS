@@ -10,6 +10,7 @@ body {
 
 header {
     background-color: rgb(255,1,193);
+    width: 100vw;
 }
 
 nav, main {
@@ -19,31 +20,49 @@ nav, main {
 
 nav {
     margin-bottom: 150px;
+    text-align: center;
 }
 
 .logo {
     width: 200px;
 }
 
-.char-div {
-    display: inline-block;
-    width: 23%;
-    margin-right: 10px;
-    background-color: blanchedalmond;
-    padding: 30px;
-    margin-bottom: 30px;
+.pagination-container {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-.char-div p {
-    padding: 25px 5px;
-    color: rgb(0,225,255);
-    font-weight: 700;
-    font-size: 1.5em;
+.names {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.char-div {
+    background-color: rgb(238, 228, 213);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-top-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+    cursor: pointer;
+}
+
+.char-div:hover {
+    border: 5px solid rgb(77,255,43);
 }
 
 .char-div img {
+    border-radius: inherit;
     width: 100%;
 }
+
+.char-div p {
+    padding-top: 5px;
+    text-align: center;
+    font-size: x-large;
+    color: rgb(1, 170, 204);
+}
+
 
 h3 {
     color: white;
@@ -55,7 +74,7 @@ h3 {
 
 
 /******************************/
-
+/* 
 .about {
     background-color: rgb(89,0,179);
     color: white;
@@ -92,4 +111,4 @@ table {
     display: inline-block;
     text-align: center;
     margin: 0 auto;
-}
+} */
