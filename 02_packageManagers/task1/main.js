@@ -31,6 +31,37 @@ figlet("Mr. Hollywood", function(error, data) {
     console.log(data);
 });
 
+
+figlet.text('Hello World', {
+    font: 'Sub-Zero',
+    horizontalLayout: 'default',
+    verticalLayout: 'default',
+    width: 200,
+    whitespaceBreak: true
+}, function(err, data) {
+    if (err) {
+        console.log('Something went wrong...');
+        console.dir(err);
+        return;
+    }
+    console.log(data);
+});
+
+figlet.text('Hello World', {
+    font: 'Slant',
+    horizontalLayout: 'default',
+    verticalLayout: 'default',
+    width: 200,
+    whitespaceBreak: true
+}, function(err, data) {
+    if (err) {
+        console.log('Something went wrong...');
+        console.dir(err);
+        return;
+    }
+    console.log(data);
+});
+
 //cowsay
 
 let cowsay = require("cowsay");
