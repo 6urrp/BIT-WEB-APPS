@@ -47,10 +47,6 @@ nav {
     cursor: pointer;
 }
 
-.char-div:hover {
-    border: 5px solid rgb(77,255,43);
-}
-
 .char-div img {
     border-radius: inherit;
     width: 100%;
@@ -73,13 +69,15 @@ h3 {
 }
 
 
-/******************************/
-/* 
+/***********SIGLE CHARACTER STYLE*******************/
+
 .about {
     background-color: rgb(89,0,179);
     color: white;
     font-size: 1.25em;
     padding: 40px 30px;
+    width: 30%;
+    height: fit-content;
 }
 
 h4 {
@@ -100,15 +98,42 @@ h4 {
 h3 {
     color: rgb(58, 56, 56);
     text-align: center;
+    padding-top: 40px;
+    color: rgb(0,176,207);
+    font-size: 3em;
 }
 
 
 .single-char {
-    background-color: rgb(255,254,239);
+    background-color: rgb(238, 228, 213);
+    padding: 20px;
+    border-top-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+    width: 100%;
+    text-align: center;
+}
+.single-char img {
+    width:80%;
+    padding: 30px;
 }
 
 table {
-    display: inline-block;
-    text-align: center;
     margin: 0 auto;
-} */
+    border-spacing: 80px 3px;
+    border-collapse: separate;
+    padding-bottom: 20px;
+}
+table th {
+    text-align: left;
+}
+table td {
+    text-align: center;
+}
+
+.single-div {
+    display: flex;
+    justify-content: space-between;
+}
+.single-name {
+    width: 50%;
+}
