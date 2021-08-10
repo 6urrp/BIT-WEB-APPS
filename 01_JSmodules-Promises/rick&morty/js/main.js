@@ -29,57 +29,55 @@ const creatingPage = (url) => {
 creatingPage(url);
 
 
-const pageButtons = (pages) => {
-        let wrapper = document.getElementById('pagination')
-        wrapper.innerHTML = ``;
+const calc = (state) => {
+    let wrapper = document.getElementById('pagination');
+    wrapper.innerHTML = ``;
 
-        for (let page = 1; page <= pages; page++) {
-            wrapper.innerHTML += `<button value=${page} class="page btn btn-sm btn-info">${page}</button>`;
-        }
+    for (let page = state.page; page <= state.window; page++) {
+        wrapper.innerHTML += `<button value=${page} class="page btn btn-sm btn-info">${page}</button>`;
+    }
 
+};
+
+calc(state);
+
+const pageButtons = (state) => {
 
         $('.page').on('click', function(event) {
             event.preventDefault();
-            $('.names').empty()
-            state.page = Number($(this).val())
+            $('.names').empty();
+            state.page = Number($(this).val());
             creatingPage(`${url}?page=${state.page}`);
+
+            if (state.page === state.window && state.page < 34) {
+                state.page -=2;
+                
+                if (state.window === 33) {
+                    state.window +=1;
+                    state.page -=1;
+                } else {
+                    state.window +=2;
+                }
+                calc(state);
+                pageButtons(state)
+            } else if (state.page + 4 === state.window) {
+                state.window -=2;
+
+                if (state.page < 3) {
+                    state.page = 1;
+                    state.window = 5;
+                } 
+                else {
+                    state.page -=2;
+                }
+                calc(state);
+                pageButtons(state)
+            }
     
         })
 }
-pageButtons(state.allPages);
+pageButtons(state);
 
-
-
-
-// fetch(url)
-// .then(resp => {
-//     return resp.json();
-// })
-// .then(char => {
-//     state.allPages = char.info.pages;
-//     char.results.forEach(el => {
-//         nameDiv.innerHTML += `
-//         <div class="char-div">
-//             <img src=${el.image}>
-//             <p class="char-name" id="${el.id}">${el.name}</p>
-//         </div>`
-//     });
-//     let single = document.querySelectorAll(".char-div");
-//     let singleArr = Array.from(single);
-//     singleArr.forEach( el => el.addEventListener("click", handler));
-
-//     return state;
-// })
-// .then(state => {
-//     const pageButtons = (pages) => {
-//         let wrapper = document.getElementById('pagination')
-//         wrapper.innerHTML = ``
-        
-//     }
-//     pageButtons(state.allPages);
-
-    
-// })
 
 const handler = e => {
     document.querySelector(".pagination-container").innerHTML = "";
